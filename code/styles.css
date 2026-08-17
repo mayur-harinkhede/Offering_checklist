@@ -1,0 +1,931 @@
+/* Akshaya Patra Daily Menu Offering Checklist - Stylesheet */
+
+:root {
+    --brand-dark: #3a1a14;
+    --brand-dark-light: #52271f;
+    --brand-gold: #e2a03f;
+    --brand-cream: #faf7f2;
+    --border-color: #3a1a14;
+    --text-color: #1a1a1a;
+    --accent-green: #2e7d32;
+    --accent-green-bg: #e8f5e9;
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: #eef2f5;
+    color: var(--text-color);
+    line-height: 1.3;
+    padding-bottom: 30px;
+}
+
+/* Screen Control Bar (Hidden on Print) */
+.control-bar {
+    background: #ffffff;
+    border-bottom: 2px solid #d1d5db;
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.control-label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--brand-dark);
+}
+
+.date-picker-input,
+.select-input {
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.date-picker-input:focus,
+.select-input:focus {
+    border-color: var(--brand-dark);
+    box-shadow: 0 0 0 3px rgba(58, 26, 20, 0.15);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--brand-dark);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-dark-light);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1.5px solid var(--brand-dark);
+    color: var(--brand-dark);
+}
+
+.btn-outline:hover {
+    background-color: rgba(58, 26, 20, 0.08);
+}
+
+.btn-success {
+    background-color: var(--accent-green);
+    color: #ffffff;
+}
+
+.btn-success:hover {
+    background-color: #1b5e20;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-saved {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.status-saving {
+    background-color: #fef9c3;
+    color: #854d0e;
+}
+
+.status-offline {
+    background-color: #f3f4f6;
+    color: #4b5563;
+}
+
+/* Printable Document Wrapper */
+.document-container {
+    max-width: 1350px;
+    margin: 1px auto;
+    background: #ffffff;
+    border: 3px solid var(--brand-dark);
+    padding: 5px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+}
+
+/* Header Design - Balanced Flex Alignment */
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 50%, #fff8f0 100%);
+    border: 2px solid var(--brand-dark);
+    border-radius: 8px;
+    padding: 8px 24px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 6px rgba(58, 26, 20, 0.06);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 0 0 auto;
+}
+
+.brand-logo-img {
+    height: 90px;
+    max-height: 95px;
+    width: auto;
+    object-fit: contain;
+}
+
+.header-center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    padding: 0 15px;
+}
+
+.main-title {
+    font-family: 'Arial Black', Impact, sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: var(--brand-dark);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.subtitle-pill {
+    background-color: var(--brand-dark);
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 26px;
+    border-radius: 14px;
+    font-size: 13.5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.subtitle-pill span {
+    color: #ffd700;
+    margin: 0 8px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    flex: 0 0 auto;
+}
+
+.children-illustration-img {
+    height: 80px;
+    max-height: 85px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid #fed7aa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.nourish-badge {
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nourish-emblem-img,
+.nourish-badge img {
+    width: 72px;
+    height: 62px;
+    max-width: 65px;
+    max-height: 62px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Checklist Table Layout */
+.checklist-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.checklist-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    table-layout: fixed;
+}
+
+.checklist-table th,
+.checklist-table td {
+    border: 1.5px solid var(--brand-dark);
+    padding: 3px 4px;
+    vertical-align: top;
+}
+
+/* Header Columns */
+.checklist-table th {
+    background-color: var(--brand-dark);
+    color: #ffffff;
+    text-align: center;
+    font-weight: 800;
+    padding: 5px 2px;
+}
+
+.checklist-table th.col-sno {
+    width: 32px;
+    font-size: 11px;
+}
+
+.checklist-table th.col-center {
+    width: 125px;
+    font-size: 12px;
+}
+
+.checklist-table th.col-day {
+    width: calc((100% - 157px) / 6);
+}
+
+.day-header-title {
+    font-size: 12.5px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+.day-header-date {
+    font-size: 10px;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin-top: 1px;
+}
+
+.date-editable {
+    background: transparent;
+    border: none;
+    border-bottom: 1px dashed #ffffff;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: bold;
+    width: 75px;
+    text-align: center;
+    outline: none;
+}
+
+/* Row & Cell Styling */
+.row-sno {
+    text-align: center;
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--brand-dark);
+    vertical-align: middle !important;
+}
+
+.center-cell-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    min-height: 80px;
+}
+
+.center-name {
+    font-weight: 900;
+    font-size: 11.5px;
+    color: var(--brand-dark);
+    margin-top: 2px;
+    line-height: 1.1;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+}
+
+.center-icon-img {
+    width: 70px;
+    height: 45px;
+    max-width: 70px;
+    max-height: 55px;
+    object-fit: contain;
+    object-position: center center;
+    display: block;
+    margin: 0 auto 3px auto;
+    flex-shrink: 0;
+}
+
+/* Checklist Items inside Cells */
+.cell-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5px;
+}
+
+.item-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1.15;
+}
+
+.item-row:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.custom-checkbox {
+    width: 13px;
+    height: 13px;
+    min-width: 13px;
+    border: 1.5px solid var(--brand-dark);
+    border-radius: 2px;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    transition: all 0.15s ease;
+}
+
+.item-row.checked .custom-checkbox {
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
+}
+
+.item-row.checked .custom-checkbox::after {
+    content: '✓';
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.item-text {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #1a1a1a;
+    flex-grow: 1;
+}
+
+.item-row.checked .item-text {
+    color: #059669;
+    font-weight: 700;
+}
+
+.food-icon,
+.food-icon-img {
+    width: 24px;
+    height: 22px;
+    min-width: 20px;
+    max-width: 25px;
+    max-height: 18px;
+    object-fit: contain;
+    margin-left: auto;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Footer Design */
+.footer-banner {
+    background-color: var(--brand-dark);
+    color: #ffffff;
+    margin-top: 8px;
+    padding: 6px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.footer-pillars {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.pillar-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+}
+
+.pillar-circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--brand-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.footer-tagline {
+    font-family: 'Brush Script MT', 'Caveat', cursive, sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    color: #fef08a;
+    letter-spacing: 0.5px;
+}
+
+/* Modal Popup for Notion Configuration */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-card {
+    background: #ffffff;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brand-dark);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #374151;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-help {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+/* FULL-PAGE 1-PAGE PRINT MEDIA QUERY */
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 4mm 6mm;
+    }
+
+    html,
+    body {
+        background: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .control-bar,
+    .modal-overlay {
+        display: none !important;
+    }
+
+    .document-container {
+        border: 2px solid #3a1a14 !important;
+        margin: 0 auto !important;
+        padding: 4px 6px !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        height: 98% !important;
+        max-height: 98% !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    .header-wrapper {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        background: #fffcf8 !important;
+        border: 1.5px solid #3a1a14 !important;
+        border-radius: 4px !important;
+        padding: 4px 16px !important;
+        margin-bottom: 4px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .brand-logo-img,
+    .header-left img {
+        height: 65px !important;
+        max-height: 70px !important;
+    }
+
+    .main-title {
+        font-size: 34px !important;
+        margin-bottom: 2px !important;
+        letter-spacing: 1px !important;
+    }
+
+    .subtitle-pill {
+        padding: 3px 18px !important;
+        font-size: 11.5px !important;
+        background-color: #3a1a14 !important;
+        color: #ffffff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .header-right {
+        gap: 10px !important;
+    }
+
+    .children-illustration-img,
+    .header-right img {
+        height: 58px !important;
+        max-height: 62px !important;
+    }
+
+    .nourish-badge,
+    .nourish-emblem-img,
+    .nourish-badge img {
+        width: 70px !important;
+        height: 62px !important;
+        max-width: 65px !important;
+        max-height: 62px !important;
+        object-fit: contain !important;
+    }
+
+    .checklist-table-wrapper {
+        flex: 1 1 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        height: 100% !important;
+    }
+
+    .checklist-table {
+        width: 100% !important;
+        height: 100% !important;
+        font-size: 10.5px !important;
+        border-collapse: collapse !important;
+        table-layout: fixed !important;
+    }
+
+    .checklist-table th {
+        padding: 3px 1px !important;
+        font-size: 10.5px !important;
+    }
+
+    .checklist-table td {
+        padding: 1.5px 3px !important;
+        border: 1.2px solid #3a1a14 !important;
+        vertical-align: middle !important;
+    }
+
+    .center-cell-content {
+        min-height: 44px !important;
+        height: 46px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    .center-icon-img,
+    .center-cell-content img {
+        width: auto !important;
+        height: 32px !important;
+        max-width: 60px !important;
+        max-height: 54px !important;
+        object-fit: contain !important;
+        object-position: center center !important;
+        display: block !important;
+        margin: 0 auto 1px auto !important;
+        flex-shrink: 0 !important;
+    }
+
+    .center-name {
+        font-size: 10px !important;
+        margin-top: 1px !important;
+        font-weight: 900 !important;
+    }
+
+    .cell-items-list {
+        gap: 1.5px !important;
+    }
+
+    .item-row {
+        gap: 3px !important;
+        line-height: 1.08 !important;
+    }
+
+    .item-text {
+        font-size: 10.5px !important;
+        font-weight: 600 !important;
+        color: #000000 !important;
+    }
+
+    .custom-checkbox {
+        width: 11px !important;
+        height: 11px !important;
+        min-width: 11px !important;
+        margin-top: 1px !important;
+    }
+
+    .food-icon,
+    .food-icon-img {
+        width: 13px !important;
+        height: 13px !important;
+        min-width: 13px !important;
+        min-height: 13px !important;
+        object-fit: contain !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .footer-banner {
+        margin-top: 3px !important;
+        padding: 3px 8px !important;
+        font-size: 9px !important;
+    }
+
+    .footer-tagline {
+        font-size: 20px !important;
+    }
+}
+
+/* RESPONSIVE MEDIA QUERIES FOR SCREEN VIEW (TABLET & MOBILE) */
+
+@media screen and (max-width: 1024px) {
+    .document-container {
+        width: 96%;
+        margin: 1px auto;
+        padding: 8px;
+    }
+
+    .main-title {
+        font-size: 22px;
+    }
+
+    .subtitle-pill {
+        padding: 3px 16px;
+        font-size: 11px;
+    }
+
+    .brand-logo-img {
+        height: 60px;
+    }
+
+    .children-illustration-img {
+        height: 55px;
+    }
+
+    .nourish-badge,
+    .nourish-badge svg {
+        width: 46px;
+        height: 46px;
+    }
+
+    .checklist-table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .checklist-table {
+        min-width: 950px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .control-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .control-group {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .date-picker-input,
+    .btn {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    .header-wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .header-left,
+    .header-center,
+    .header-right {
+        justify-content: center;
+        flex: 1 1 100%;
+    }
+
+    .brand-logo-img {
+        height: 55px;
+        max-height: 60px;
+    }
+
+    .main-title {
+        font-size: 20px;
+        white-space: normal;
+    }
+
+    .subtitle-pill {
+        font-size: 11px;
+        padding: 3px 14px;
+    }
+
+    .children-illustration-img {
+        height: 50px;
+    }
+
+    .nourish-badge,
+    .nourish-badge svg {
+        width: 42px;
+        height: 42px;
+    }
+
+    .checklist-table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+    }
+
+    .checklist-table {
+        min-width: 850px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    body {
+        padding: 6px;
+    }
+
+    .document-container {
+        width: 100%;
+        padding: 6px;
+        margin: 1px 0;
+        border-width: 1.5px;
+    }
+
+    .control-bar {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .header-left img {
+        height: 48px;
+    }
+
+    .main-title {
+        font-size: 17px;
+    }
+
+    .subtitle-pill {
+        font-size: 10px;
+        padding: 2px 10px;
+    }
+
+    .children-illustration-img {
+        height: 42px;
+    }
+
+    .nourish-badge,
+    .nourish-badge svg {
+        width: 36px;
+        height: 36px;
+    }
+}

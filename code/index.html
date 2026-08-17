@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshaya Patra - Daily Menu Offering Checklist</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍲</text></svg>">
+</head>
+<body>
+
+    <!-- Control Bar (Screen Only, Hidden in Print) -->
+    <div class="control-bar">
+        <div class="control-group">
+            <span class="control-label">📅 Current Week Starting:</span>
+            <input type="date" id="week-date-picker" class="date-picker-input" readonly style="background-color: #f1f5f9; cursor: default;">
+        </div>
+
+        <div class="control-group">
+            <span id="notion-status-badge" class="status-badge status-offline">
+                ⚡ Notion: Unconfigured
+            </span>
+            <button id="btn-notion-settings" class="btn btn-outline">⚙️ Notion Setup</button>
+            <button id="btn-save-notion" class="btn btn-success">💾 Save to Notion</button>
+            <button id="btn-print" class="btn btn-primary">🖨️ Print Form</button>
+        </div>
+    </div>
+
+    <!-- Printable Checklist Document -->
+    <div class="document-container" id="printable-doc">
+        
+        <!-- Header Banner -->
+        <header class="header-wrapper">
+            <!-- Left Branding Logo -->
+            <div class="header-left">
+                <img src="../images/akshaya_patra_logo.jpg" alt="Akshaya Patra Logo" class="brand-logo-img">
+            </div>
+
+            <!-- Main Title Banner -->
+            <div class="header-center">
+                <h2 class="main-title">DAILY MENU OFFERING CHECKLIST</h2>
+                <div class="subtitle-pill">
+                    8 CENTERS <span>|</span> MONDAY TO SATURDAY
+                </div>
+            </div>
+
+            <!-- Right Branding Group -->
+            <div class="header-right">
+                <img src="../images/children_eating.jpg" alt="Children Eating Illustration" class="children-illustration-img">
+                <div class="nourish-badge">
+                    <img src="../images/nourishing children.png" alt="Nourishing Children Emblem" class="nourish-emblem-img">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Checklist Grid Table -->
+        <div class="checklist-table-wrapper">
+            <table class="checklist-table">
+                <thead>
+                    <tr>
+                        <th class="col-sno">S. No.</th>
+                        <th class="col-center">CENTER</th>
+                        <th class="col-day">
+                            <div class="day-header-title">MONDAY</div>
+                            <div class="day-header-date">(Date: <input type="text" class="date-editable" id="date-mon" placeholder="__/__/____">)</div>
+                        </th>
+                        <th class="col-day">
+                            <div class="day-header-title">TUESDAY</div>
+                            <div class="day-header-date">(Date: <input type="text" class="date-editable" id="date-tue" placeholder="__/__/____">)</div>
+                        </th>
+                        <th class="col-day">
+                            <div class="day-header-title">WEDNESDAY</div>
+                            <div class="day-header-date">(Date: <input type="text" class="date-editable" id="date-wed" placeholder="__/__/____">)</div>
+                        </th>
+                        <th class="col-day">
+                            <div class="day-header-title">THURSDAY</div>
+                            <div class="day-header-date">(Date: <input type="text" class="date-editable" id="date-thu" placeholder="__/__/____">)</div>
+                        </th>
+                        <th class="col-day">
+                            <div class="day-header-title">FRIDAY</div>
+                            <div class="day-header-date">(Date: <input type="text" class="date-editable" id="date-fri" placeholder="__/__/____">)</div>
+                        </th>
+                        <th class="col-day">
+                            <div class="day-header-title">SATURDAY</div>
+                            <div class="day-header-date">(Date: <input type="text" class="date-editable" id="date-sat" placeholder="__/__/____">)</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="checklist-tbody">
+                    <!-- Populated dynamically via app.js -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer Banner -->
+        <footer class="footer-banner">
+            <div class="footer-pillars">
+                <div class="pillar-item">
+                    <span class="pillar-circle">🕮</span>
+                    <span>FOOD FOR EDUCATION</span>
+                </div>
+                <span style="color: #cbd5e1; font-weight: normal;">|</span>
+                <div class="pillar-item">
+                    <span class="pillar-circle">👨‍👩‍👧‍👦</span>
+                    <span>FOOD FOR GROWTH</span>
+                </div>
+                <span style="color: #cbd5e1; font-weight: normal;">|</span>
+                <div class="pillar-item">
+                    <span class="pillar-circle">🥣</span>
+                    <span>FOOD FOR GOOD</span>
+                </div>
+            </div>
+            <div class="footer-tagline">
+                Together, we serve. Together, we transform lives. 🌿
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Notion Setup Modal -->
+    <div id="notion-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 class="modal-title">⚙️ Notion Integration Settings</h3>
+                <button id="modal-close-btn" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                
+                <!-- Quick Setup Guide Box -->
+                <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: 12.5px; color: #166534; line-height: 1.4;">
+                    <strong>📌 Essential Step in Notion:</strong><br>
+                    Open your Database or Page in Notion &rarr; Click <strong><code>...</code></strong> (top-right corner) &rarr; Click <strong>Add connections</strong> &rarr; Select <strong>"Offering Checklist"</strong>.
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="input-notion-key">1. Notion Integration Secret Token (API Key)</label>
+                    <input type="password" id="input-notion-key" class="form-input" placeholder="secret_xxxxxxxxxxxxxxxxxxxxxxxxxx">
+                    <div class="form-help">Created at notion.so/my-integrations</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="input-database-id">2. Notion Database ID or Full Page URL</label>
+                    <input type="text" id="input-database-id" class="form-input" placeholder="Paste full Notion Database URL or 32-character ID">
+                    <div class="form-help">You can paste the entire link from your browser address bar!</div>
+                </div>
+
+                <div id="modal-msg" style="font-size: 13px; padding: 8px 12px; border-radius: 6px; margin-bottom: 12px; display: none;"></div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                    <button id="btn-test-notion" class="btn btn-outline">Test Connection</button>
+                    <button id="btn-save-notion-config" class="btn btn-primary">Save Config</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "akshaya-patra-offering-checklist",
+  "version": "2.0.0",
+  "description": "Akshaya Patra Daily Menu Offering Checklist Server",
+  "main": "code/server.js",
+  "scripts": {
+    "start": "node code/server.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}

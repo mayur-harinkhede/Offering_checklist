@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, '../code')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/images', express.static(path.join(__dirname, '../images')));
 app.use(express.static(path.join(__dirname, 'images')));
@@ -16,7 +17,16 @@ app.use(express.static(path.join(__dirname, '../images')));
 
 // Explicit Root Route handler to guarantee index.html is always served
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    const fs = require('fs');
+    const localIndex = path.join(__dirname, 'index.html');
+    const rootIndex = path.join(__dirname, '../code/index.html');
+    if (fs.existsSync(localIndex)) {
+        res.sendFile(localIndex);
+    } else if (fs.existsSync(rootIndex)) {
+        res.sendFile(rootIndex);
+    } else {
+        res.sendFile(path.resolve('code/index.html'));
+    }
 });
 
 // Helper to initialize Notion Client

@@ -14,6 +14,11 @@ app.use('/images', express.static(path.join(__dirname, '../images')));
 app.use(express.static(path.join(__dirname, 'images')));
 app.use(express.static(path.join(__dirname, '../images')));
 
+// Explicit Root Route handler to guarantee index.html is always served
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 // Helper to initialize Notion Client
 function getNotionClient(authKey) {
     if (!authKey) throw new Error("Notion API Key is required");

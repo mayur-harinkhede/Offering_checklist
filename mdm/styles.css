@@ -1,0 +1,1087 @@
+/* Akshaya Patra Daily Menu Offering Checklist (MDM) - Stylesheet */
+
+:root {
+    --brand-dark: #3a1a14;
+    --brand-dark-light: #52271f;
+    --brand-gold: #e2a03f;
+    --brand-cream: #faf7f2;
+    --border-color: #3a1a14;
+    --text-color: #1a1a1a;
+    --accent-green: #2e7d32;
+    --accent-green-bg: #e8f5e9;
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: #eef2f5;
+    color: var(--text-color);
+    line-height: 1.3;
+    padding-bottom: 30px;
+}
+
+/* Screen Control Bar (Hidden on Print) */
+.control-bar {
+    background: #ffffff;
+    border-bottom: 2px solid #d1d5db;
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.control-label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--brand-dark);
+}
+
+.btn-portal-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: #f1f5f9;
+    color: var(--brand-dark);
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-portal-home:hover {
+    background: #e2e8f0;
+    border-color: var(--brand-dark);
+}
+
+.date-picker-input,
+.select-input {
+    padding: 8px 12px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.date-picker-input:focus,
+.select-input:focus {
+    border-color: var(--brand-dark);
+    box-shadow: 0 0 0 3px rgba(58, 26, 20, 0.15);
+}
+
+.select-input-sm {
+    padding: 6px 12px;
+    border: 1.5px solid var(--brand-dark);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: inherit;
+    background-color: #ffffff;
+    color: var(--brand-dark);
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.select-input-sm:focus {
+    border-color: var(--brand-dark-light);
+    box-shadow: 0 0 0 3px rgba(58, 26, 20, 0.15);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--brand-dark);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-dark-light);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1.5px solid var(--brand-dark);
+    color: var(--brand-dark);
+}
+
+.btn-outline:hover {
+    background-color: rgba(58, 26, 20, 0.08);
+}
+
+.btn-success {
+    background-color: var(--accent-green);
+    color: #ffffff;
+}
+
+.btn-success:hover {
+    background-color: #1b5e20;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.status-saved {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.status-saving {
+    background-color: #fef9c3;
+    color: #854d0e;
+}
+
+.status-offline {
+    background-color: #f3f4f6;
+    color: #4b5563;
+}
+
+/* Printable Document Wrapper */
+.document-container {
+    max-width: 1350px;
+    margin: 1px auto;
+    background: #ffffff;
+    border: 3px solid var(--brand-dark);
+    padding: 5px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+}
+
+/* Header Design - Balanced 3-Column Grid Alignment */
+.header-wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 50%, #fff8f0 100%);
+    border: 2px solid var(--brand-dark);
+    border-radius: 8px;
+    padding: 8px 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 6px rgba(58, 26, 20, 0.06);
+    gap: 15px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.brand-logo-img {
+    height: 75px;
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+}
+
+.header-center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.main-title {
+    font-family: 'Arial Black', Impact, sans-serif;
+    font-size: 35px;
+    font-weight: 900;
+    color: var(--brand-dark);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    line-height: 1.15;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.subtitle-pill {
+    background-color: var(--brand-dark);
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 22px;
+    border-radius: 14px;
+    font-size: 16.5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.subtitle-pill span {
+    color: #ffd700;
+    margin: 0 8px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.children-illustration-img {
+    height: 65px;
+    max-height: 70px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    border-radius: 6px;
+    border: 1px solid #fed7aa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.nourish-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+}
+
+.nourish-emblem-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nourish-badge {
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nourish-emblem-img,
+.nourish-badge img {
+    width: 72px;
+    height: 62px;
+    max-width: 65px;
+    max-height: 62px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Checklist Table Layout */
+.checklist-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.checklist-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    table-layout: fixed;
+}
+
+.checklist-table th,
+.checklist-table td {
+    border: 1.5px solid var(--brand-dark);
+    padding: 3px 4px;
+    vertical-align: top;
+}
+
+/* Header Columns */
+.checklist-table th {
+    background-color: var(--brand-dark);
+    color: #ffffff;
+    text-align: center;
+    font-weight: 800;
+    padding: 5px 2px;
+}
+
+.checklist-table th.col-sno {
+    width: 32px;
+    font-size: 11px;
+}
+
+.checklist-table th.col-center {
+    width: 125px;
+    font-size: 12px;
+}
+
+.checklist-table th.col-day {
+    width: calc((100% - 157px) / 6);
+}
+
+.day-header-title {
+    font-size: 12.5px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+.day-header-date {
+    font-size: 10px;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin-top: 1px;
+}
+
+.date-editable {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: bold;
+    width: 75px;
+    text-align: center;
+    outline: none;
+}
+
+/* Row & Cell Styling */
+.row-sno {
+    text-align: center;
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--brand-dark);
+    vertical-align: middle !important;
+}
+
+.center-cell-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    min-height: 80px;
+}
+
+.center-name {
+    font-weight: 900;
+    font-size: 11.5px;
+    color: var(--brand-dark);
+    margin-top: 2px;
+    line-height: 1.1;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+}
+
+.center-icon-img {
+    width: 70px;
+    height: 45px;
+    max-width: 70px;
+    max-height: 55px;
+    object-fit: contain;
+    object-position: center center;
+    display: block;
+    margin: 0 auto 3px auto;
+    flex-shrink: 0;
+}
+
+/* Checklist Items inside Cells */
+.cell-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5px;
+}
+
+.item-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1.15;
+}
+
+.item-row:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.custom-checkbox {
+    width: 13px;
+    height: 13px;
+    min-width: 13px;
+    border: 1.5px solid var(--brand-dark);
+    border-radius: 2px;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    transition: all 0.15s ease;
+}
+
+.item-row.checked .custom-checkbox {
+    background-color: var(--brand-dark);
+    border-color: var(--brand-dark);
+}
+
+.item-row.checked .custom-checkbox::after {
+    content: '✓';
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.item-text {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #1a1a1a;
+    flex-grow: 1;
+}
+
+.item-row.checked .item-text {
+    color: #059669;
+    font-weight: 700;
+}
+
+.food-icon,
+.food-icon-img {
+    width: 24px;
+    height: 22px;
+    min-width: 20px;
+    max-width: 25px;
+    max-height: 18px;
+    object-fit: contain;
+    margin-left: auto;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Footer Banner */
+.footer-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--brand-dark);
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.footer-pillars {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.pillar-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10.5px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.footer-tagline {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ffd700;
+    letter-spacing: 0.5px;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-card {
+    background: #ffffff;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.modal-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--brand-dark);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.modal-body .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 14px;
+    width: 100%;
+}
+
+.modal-body .form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand-dark);
+    margin-bottom: 5px;
+    width: 100%;
+    text-align: left;
+}
+
+.modal-body .form-input {
+    display: block;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 8px 12px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+}
+
+.modal-body .form-input:focus {
+    border-color: var(--brand-dark);
+    box-shadow: 0 0 0 3px rgba(58, 26, 20, 0.15);
+}
+
+.modal-body .form-help {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 3px;
+}
+
+/* Responsive Screen Breakpoints (Laptops, Tablets & Mobile Phones) */
+@media screen and (max-width: 1200px) {
+    .document-container {
+        max-width: 98%;
+        margin: 10px auto;
+        padding: 8px;
+    }
+    .main-title {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .control-bar {
+        padding: 8px 14px;
+    }
+    .document-container {
+        margin: 8px auto;
+        padding: 6px;
+    }
+    .main-title {
+        font-size: 22px;
+    }
+    .brand-logo-img {
+        height: 60px;
+    }
+    .children-illustration-img {
+        height: 55px;
+    }
+    .nourish-badge {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding-bottom: 16px;
+    }
+    .control-bar {
+        padding: 10px 12px;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .control-group {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        gap: 6px;
+    }
+    .btn {
+        padding: 7px 10px;
+        font-size: 12px;
+        flex: 1 1 auto;
+        justify-content: center;
+    }
+    .btn-portal-home {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    .select-input-sm, .date-picker-input {
+        padding: 5px 8px;
+        font-size: 12.5px;
+    }
+    .status-badge {
+        padding: 4px 10px;
+        font-size: 11px;
+    }
+    .document-container {
+        margin: 6px 4px;
+        padding: 6px 4px;
+        border-width: 2px;
+    }
+    .header-wrapper {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        margin-bottom: 8px;
+    }
+    .brand-logo-img {
+        height: 48px;
+    }
+    .main-title {
+        font-size: 17px;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.2;
+    }
+    .subtitle-pill {
+        font-size: 10px;
+        padding: 2px 14px;
+    }
+    .children-illustration-img {
+        height: 44px;
+        max-width: 110px;
+    }
+    .nourish-badge {
+        width: 44px;
+        height: 44px;
+    }
+    .checklist-table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 4px;
+    }
+    .checklist-table {
+        min-width: 950px;
+    }
+    .item-row {
+        padding: 2.5px 3px;
+    }
+    .footer-banner {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+        padding: 6px 8px;
+    }
+    .footer-pillars {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .control-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .header-wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 6px;
+        padding: 8px;
+    }
+    .header-left, .header-right {
+        justify-content: center;
+    }
+    .brand-logo-img {
+        height: 44px;
+    }
+    .main-title {
+        font-size: 15px;
+    }
+    .subtitle-pill {
+        font-size: 9.5px;
+        padding: 2px 12px;
+    }
+    .checklist-table {
+        min-width: 880px;
+    }
+}
+
+/* Print Media Query - Full Landscape Page Layout (Matching Target Design 100%) */
+@media print {
+    @page {
+        size: landscape;
+        margin: 3mm 4mm;
+    }
+
+    *, *:before, *:after {
+        box-sizing: border-box !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        forced-color-adjust: none !important;
+    }
+
+    html, body, div, table, thead, tbody, tr, th, td, span, header, footer, img {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        forced-color-adjust: none !important;
+    }
+
+    html, body {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+    }
+
+    .no-print, .control-bar, .modal-overlay {
+        display: none !important;
+    }
+
+    .document-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 4px 6px !important;
+        border: 3px solid #3a1a14 !important;
+        border-radius: 4px !important;
+        box-shadow: none !important;
+        zoom: 1 !important;
+        transform: none !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+        page-break-before: avoid !important;
+    }
+
+    .header-wrapper {
+        display: grid !important;
+        grid-template-columns: auto 1fr auto !important;
+        align-items: center !important;
+        padding: 4px 12px !important;
+        margin-bottom: 4px !important;
+        border: 2px solid #3a1a14 !important;
+        border-radius: 6px !important;
+        background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 50%, #fff8f0 100%) !important;
+        gap: 14px !important;
+    }
+
+    .header-left {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+    }
+
+    .brand-logo-img {
+        height: 58px !important;
+        max-height: 62px !important;
+        width: auto !important;
+        object-fit: contain !important;
+    }
+    
+    .header-center {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    .main-title {
+        font-family: 'Arial Black', Impact, sans-serif !important;
+        font-size: 30px !important;
+        font-weight: 900 !important;
+        color: #3a1a14 !important;
+        margin-bottom: 3px !important;
+        letter-spacing: 1px !important;
+        line-height: 1.15 !important;
+        white-space: nowrap !important;
+        text-transform: uppercase !important;
+    }
+
+    .subtitle-pill {
+        background-color: #3a1a14 !important;
+        color: #ffffff !important;
+        font-size: 16.5px !important;
+        padding: 3px 22px !important;
+        border-radius: 14px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.8px !important;
+    }
+
+    .subtitle-pill span {
+        color: #ffd700 !important;
+        margin: 0 6px !important;
+    }
+
+    .header-right {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 8px !important;
+    }
+
+    .children-illustration-img {
+        height: 50px !important;
+        max-height: 54px !important;
+        width: auto !important;
+        object-fit: contain !important;
+        border-radius: 5px !important;
+        border: 1.5px solid #fed7aa !important;
+    }
+
+    .nourish-badge {
+        width: 50px !important;
+        height: 50px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .nourish-emblem-img {
+        width: 50px !important;
+        height: 50px !important;
+        object-fit: contain !important;
+    }
+
+    /* Table Grid & Cells - Compact Vertical Spacing, Full Font Sizes */
+    .checklist-table-wrapper {
+        width: 100% !important;
+        margin-bottom: 3px !important;
+        border: 2px solid #3a1a14 !important;
+        border-radius: 3px !important;
+    }
+
+    .checklist-table {
+        width: 100% !important;
+        font-size: 10px !important;
+        table-layout: fixed !important;
+        border-collapse: collapse !important;
+    }
+
+    .checklist-table th, .checklist-table td {
+        padding: 1.5px 3px !important;
+        border: 1.5px solid #3a1a14 !important;
+    }
+
+    .checklist-table thead th {
+        background-color: #3a1a14 !important;
+        color: #ffffff !important;
+        font-size: 11px !important;
+        padding: 3.5px 2px !important;
+        border-color: #3a1a14 !important;
+    }
+
+    .checklist-table th.col-sno, .checklist-table td.row-sno {
+        width: 3% !important;
+        text-align: center !important;
+        font-size: 12px !important;
+        font-weight: 900 !important;
+        color: #3a1a14 !important;
+        vertical-align: middle !important;
+    }
+
+    .checklist-table th.col-center {
+        width: 12% !important;
+    }
+
+    .checklist-table th.col-day {
+        width: 14.16% !important;
+    }
+
+    .day-header-title {
+        font-size: 11px !important;
+        font-weight: 900 !important;
+        letter-spacing: 0.4px !important;
+        color: #ffffff !important;
+    }
+
+    .day-header-date {
+        font-size: 9px !important;
+        color: #fef3c7 !important;
+        margin-top: 1px !important;
+    }
+
+    .date-editable {
+        font-size: 9px !important;
+        color: #ffffff !important;
+        font-weight: 700 !important;
+    }
+
+    .center-cell-content {
+        min-height: 30px !important;
+        padding: 1px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    .center-icon-img {
+        width: 48px !important;
+        height: 28px !important;
+        object-fit: contain !important;
+        margin-bottom: 1px !important;
+    }
+
+    .center-name {
+        font-size: 9.5px !important;
+        font-weight: 900 !important;
+        color: #3a1a14 !important;
+        text-transform: uppercase !important;
+    }
+    
+    .cell-items-list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1px !important;
+    }
+
+    .item-row {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 3px !important;
+        padding: 0.5px 1px !important;
+    }
+
+    .custom-checkbox {
+        width: 11px !important;
+        height: 11px !important;
+        min-width: 11px !important;
+        border: 1.5px solid #3a1a14 !important;
+        border-radius: 2px !important;
+    }
+
+    .item-text {
+        font-size: 10px !important;
+        font-weight: 600 !important;
+        color: #1a1a1a !important;
+        flex-grow: 1 !important;
+    }
+
+    .is-checked .item-text {
+        color: #15803d !important;
+        font-weight: 800 !important;
+    }
+
+    .food-icon, .food-icon-img {
+        width: 16px !important;
+        height: 14px !important;
+        max-width: 18px !important;
+        object-fit: contain !important;
+        flex-shrink: 0 !important;
+    }
+
+    .footer-banner {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 3px 10px !important;
+        margin-top: 3px !important;
+        background-color: #3a1a14 !important;
+        color: #ffffff !important;
+        border-radius: 4px !important;
+        font-size: 9.5px !important;
+    }
+
+    .footer-pillars {
+        display: flex !important;
+        gap: 10px !important;
+        align-items: center !important;
+    }
+
+    .pillar-item {
+        font-size: 9.5px !important;
+        font-weight: 700 !important;
+        color: #ffffff !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+    }
+
+    .footer-tagline {
+        font-size: 10px !important;
+        font-weight: 800 !important;
+        color: #ffffff !important;
+        font-style: italic !important;
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "offering-portal",
+  "version": "1.0.0",
+  "description": "Akshaya Patra Digital Checklist Portal (MDM & Breakfast)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

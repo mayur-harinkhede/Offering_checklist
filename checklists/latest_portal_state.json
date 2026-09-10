@@ -1,0 +1,53 @@
+{
+  "mdm": {
+    "checkedItems": {},
+    "allWeeksChecked": {
+      "2026-09-07": {},
+      "2026-09-28": {},
+      "2026-11-02": {},
+      "2026-08-31": {}
+    },
+    "dates": {
+      "mon": "31/08/2026",
+      "tue": "01/09/2026",
+      "wed": "02/09/2026",
+      "thu": "03/09/2026",
+      "fri": "04/09/2026",
+      "sat": "05/09/2026"
+    },
+    "weekLabel": "Week (07/09 - 12/09/2026)",
+    "currentMondayStr": "2026-09-07"
+  },
+  "breakfast": {
+    "checkedItems": {
+      "1-wed-2": false,
+      "1-wed-7": false,
+      "3-fri-0": false,
+      "1-fri-5": false
+    },
+    "allWeeksChecked": {
+      "2026-09-07": {
+        "1-wed-2": false,
+        "1-wed-7": false,
+        "3-fri-0": false,
+        "1-fri-5": false
+      },
+      "2026-08-31": {},
+      "2026-09-14": {}
+    },
+    "dates": {
+      "mon": "07/09/2026",
+      "tue": "08/09/2026",
+      "wed": "09/09/2026",
+      "thu": "10/09/2026",
+      "fri": "11/09/2026",
+      "sat": "12/09/2026"
+    },
+    "weekLabel": "Week (07/09 - 12/09/2026)",
+    "currentMondayStr": "2026-09-07",
+    "inspectorName": "Chaitanya Dasa",
+    "inspectorDate": "10-09-2026",
+    "inspectorSig": "Chaitanya Dasa",
+    "inspectorRemarks": "Nothing"
+  }
+}

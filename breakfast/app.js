@@ -120,6 +120,100 @@ const CENTERS_DATA = [
             fri: [{ text: "Bonda 2 No's", type: "bonda" }, { text: "Chutney", type: "chutney" }],
             sat: [{ text: "Dosa 2 No's", type: "dosa" }, { text: "Chutney", type: "chutney" }]
         }
+    },
+    {
+        id: 4,
+        name: "MAHBUBNAGAR",
+        iconImg: "/images/center_mahbubnagar.png",
+        menu: {
+            mon: [
+                { text: "Upma", type: "upma" },
+                { text: "Chutney", type: "chutney" },
+                { text: "Millet Idly", type: "idly" },
+                { text: "Sambar", type: "dal" },
+                { text: "Dosa", type: "dosa" },
+                { text: "Veg Chutney", type: "chutney" },
+                { text: "Idly", type: "idly" },
+                { text: "Sambar", type: "dal" },
+                { text: "Poori", type: "poori" },
+                { text: "Veg Kurma", type: "curry" },
+                { text: "Bonda", type: "bonda" },
+                { text: "Chutney", type: "chutney" },
+                { text: "Milk", type: "curd" }
+            ],
+            tue: [
+                { text: "Dosa", type: "dosa" },
+                { text: "Veg Chutney", type: "chutney" },
+                { text: "Poori", type: "poori" },
+                { text: "Veg Kurma", type: "curry" },
+                { text: "Millet Idly", type: "idly" },
+                { text: "Sambar", type: "dal" },
+                { text: "Upma", type: "upma" },
+                { text: "Chutney", type: "chutney" },
+                { text: "Idly", type: "idly" },
+                { text: "Sambar", type: "dal" },
+                { text: "Bonda", type: "bonda" },
+                { text: "Chutney", type: "chutney" }
+            ],
+            wed: [
+                { text: "Millet Idly", type: "idly" },
+                { text: "Sambar", type: "dal" },
+                { text: "Bonda", type: "bonda" },
+                { text: "Chutney", type: "chutney" },
+                { text: "Poori", type: "poori" },
+                { text: "Veg Kurma", type: "curry" },
+                { text: "Dosa", type: "dosa" },
+                { text: "Veg Chutney", type: "chutney" },
+                { text: "Idly", type: "idly" },
+                { text: "Sambar", type: "dal" },
+                { text: "Upma", type: "upma" },
+                { text: "Chutney", type: "chutney" },
+                { text: "Milk", type: "curd" }
+            ],
+            thu: [
+                { text: "Poori", type: "poori" },
+                { text: "Veg Kurma", type: "curry" },
+                { text: "Idly", type: "idly" },
+                { text: "Sambar", type: "dal" },
+                { text: "Bonda", type: "bonda" },
+                { text: "Chutney", type: "chutney" },
+                { text: "Millet Idly", type: "idly" },
+                { text: "Sambar", type: "dal" },
+                { text: "Upma", type: "upma" },
+                { text: "Chutney", type: "chutney" },
+                { text: "Dosa", type: "dosa" },
+                { text: "Veg Chutney", type: "chutney" },
+                { text: "Milk", type: "curd" }
+            ],
+            fri: [
+                { text: "Bonda", type: "bonda" },
+                { text: "Chutney", type: "chutney" },
+                { text: "Upma", type: "upma" },
+                { text: "Chutney", type: "chutney" },
+                { text: "Idly", type: "idly" },
+                { text: "Sambar", type: "dal" },
+                { text: "Dosa", type: "dosa" },
+                { text: "Veg Chutney", type: "chutney" },
+                { text: "Poori", type: "poori" },
+                { text: "Veg Kurma", type: "curry" },
+                { text: "Millet Idly", type: "idly" },
+                { text: "Sambar", type: "dal" },
+                { text: "Milk", type: "curd" }
+            ],
+            sat: [
+                { text: "Idly", type: "idly" },
+                { text: "Sambar", type: "dal" },
+                { text: "Dosa", type: "dosa" },
+                { text: "Veg Chutney", type: "chutney" },
+                { text: "Upma", type: "upma" },
+                { text: "Chutney", type: "chutney" },
+                { text: "Millet Idly", type: "idly" },
+                { text: "Sambar", type: "dal" },
+                { text: "Poori", type: "poori" },
+                { text: "Veg Kurma", type: "curry" },
+                { text: "Milk", type: "curd" }
+            ]
+        }
     }
 ];
 
@@ -271,12 +365,18 @@ function getWeekMonday(dateObj = new Date()) {
 function initCurrentWeekDisplay() {
     const picker = document.getElementById('week-date-picker');
     let activeMonday = getWeekMonday(new Date());
-    if (picker && picker.value) {
+    if (appState.currentMondayStr) {
+        const parts = appState.currentMondayStr.split('-');
+        if (parts.length === 3) {
+            activeMonday = getWeekMonday(new Date(parts[0], parts[1] - 1, parts[2]));
+        }
+    } else if (picker && picker.value) {
         const parts = picker.value.split('-');
         if (parts.length === 3) {
             activeMonday = getWeekMonday(new Date(parts[0], parts[1] - 1, parts[2]));
         }
-    } else if (picker) {
+    }
+    if (picker) {
         picker.value = formatLocalYmd(activeMonday);
     }
 

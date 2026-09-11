@@ -251,12 +251,18 @@ function getWeekMonday(dateObj = new Date()) {
 function initCurrentWeekDisplay() {
     const picker = document.getElementById('week-date-picker');
     let activeMonday = getWeekMonday(new Date());
-    if (picker && picker.value) {
+    if (appState.currentMondayStr) {
+        const parts = appState.currentMondayStr.split('-');
+        if (parts.length === 3) {
+            activeMonday = getWeekMonday(new Date(parts[0], parts[1] - 1, parts[2]));
+        }
+    } else if (picker && picker.value) {
         const parts = picker.value.split('-');
         if (parts.length === 3) {
             activeMonday = getWeekMonday(new Date(parts[0], parts[1] - 1, parts[2]));
         }
-    } else if (picker) {
+    }
+    if (picker) {
         picker.value = formatLocalYmd(activeMonday);
     }
 

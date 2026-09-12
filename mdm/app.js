@@ -242,26 +242,35 @@ function formatLocalYmd(dateObj) {
 function getWeekMonday(dateObj = new Date()) {
     const d = new Date(dateObj);
     const day = d.getDay();
-    const diff = (day === 0 ? 1 : 1 - day);
+    const diff = (day === 0 ? -6 : 1 - day);
     const monday = new Date(d);
     monday.setDate(d.getDate() + diff);
+    monday.setHours(0, 0, 0, 0);
     return monday;
 }
 
 function initCurrentWeekDisplay() {
     const picker = document.getElementById('week-date-picker');
-    let activeMonday = getWeekMonday(new Date());
+    let activeMonday = null;
+
     if (appState.currentMondayStr) {
         const parts = appState.currentMondayStr.split('-');
         if (parts.length === 3) {
-            activeMonday = getWeekMonday(new Date(parts[0], parts[1] - 1, parts[2]));
-        }
-    } else if (picker && picker.value) {
-        const parts = picker.value.split('-');
-        if (parts.length === 3) {
-            activeMonday = getWeekMonday(new Date(parts[0], parts[1] - 1, parts[2]));
+            activeMonday = getWeekMonday(new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10)));
         }
     }
+    if (!activeMonday) {
+        if (picker && picker.value) {
+            const parts = picker.value.split('-');
+            if (parts.length === 3) {
+                activeMonday = getWeekMonday(new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10)));
+            }
+        }
+    }
+    if (!activeMonday) {
+        activeMonday = getWeekMonday(new Date());
+    }
+
     if (picker) {
         picker.value = formatLocalYmd(activeMonday);
     }
@@ -282,28 +291,29 @@ function updateDayDates(mondayDate, isUserChange = false) {
 
     let mondayStr = '';
     let saturdayStr = '';
-
     const newMondayYmd = formatLocalYmd(mondayDate);
 
-    // Save previous week's checks
-    if (appState.currentMondayStr && appState.checkedItems) {
-        if (!appState.allWeeksChecked) appState.allWeeksChecked = {};
-        appState.allWeeksChecked[appState.currentMondayStr] = { ...appState.checkedItems };
+    if (!appState.allWeeksChecked) appState.allWeeksChecked = {};
+
+    // If user explicitly changed the week, save current week's checks first
+    if (isUserChange && appState.currentMondayStr && appState.currentMondayStr !== newMondayYmd) {
+        appState.allWeeksChecked[appState.currentMondayStr] = { ...(appState.checkedItems || {}) };
     }
 
     appState.currentMondayStr = newMondayYmd;
 
-    // Restore checks for the newly selected week
-    if (appState.allWeeksChecked && appState.allWeeksChecked[newMondayYmd]) {
+    // Restore checks for this week without wiping
+    if (appState.allWeeksChecked[newMondayYmd]) {
         appState.checkedItems = { ...appState.allWeeksChecked[newMondayYmd] };
+    } else if (appState.checkedItems && Object.keys(appState.checkedItems).length > 0 && !isUserChange) {
+        appState.allWeeksChecked[newMondayYmd] = { ...appState.checkedItems };
     } else {
         appState.checkedItems = {};
+        appState.allWeeksChecked[newMondayYmd] = {};
     }
 
     days.forEach((day, index) => {
-        const d = new Date(mondayDate);
-        d.setDate(mondayDate.getDate() + index);
-
+        const d = new Date(mondayDate.getFullYear(), mondayDate.getMonth(), mondayDate.getDate() + index);
         const dd = String(d.getDate()).padStart(2, '0');
         const mm = String(d.getMonth() + 1).padStart(2, '0');
         const yyyy = d.getFullYear();
@@ -320,6 +330,7 @@ function updateDayDates(mondayDate, isUserChange = false) {
 
     appState.weekLabel = `Week (${mondayStr} - ${saturdayStr})`;
     renderChecklistTable();
+    saveLocalState();
 }
 
 function initEventListeners() {
@@ -332,7 +343,7 @@ function initEventListeners() {
             if (e.target.value) {
                 const parts = e.target.value.split('-');
                 if (parts.length === 3) {
-                    const selectedMon = getWeekMonday(new Date(parts[0], parts[1] - 1, parts[2]));
+                    const selectedMon = getWeekMonday(new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10)));
                     updateDayDates(selectedMon, true);
                     saveLocalState();
                     triggerAutoSaveToNotion();
@@ -380,6 +391,7 @@ function initEventListeners() {
             if (!key) return;
 
             if (!appState.checkedItems) appState.checkedItems = {};
+            if (!appState.allWeeksChecked) appState.allWeeksChecked = {};
 
             const isCurrentlyChecked = Boolean(appState.checkedItems[key]);
 
@@ -392,7 +404,6 @@ function initEventListeners() {
             }
 
             if (appState.currentMondayStr) {
-                if (!appState.allWeeksChecked) appState.allWeeksChecked = {};
                 appState.allWeeksChecked[appState.currentMondayStr] = { ...appState.checkedItems };
             }
 
@@ -419,10 +430,18 @@ function loadLocalState() {
         const saved = localStorage.getItem('akshaya_patra_mdm_state');
         if (saved) {
             const parsed = JSON.parse(saved);
-            if (parsed.allWeeksChecked) appState.allWeeksChecked = parsed.allWeeksChecked;
-            if (parsed.checkedItems) appState.checkedItems = parsed.checkedItems;
+            if (parsed.allWeeksChecked && typeof parsed.allWeeksChecked === 'object') {
+                appState.allWeeksChecked = parsed.allWeeksChecked;
+            }
+            if (parsed.checkedItems && typeof parsed.checkedItems === 'object') {
+                appState.checkedItems = parsed.checkedItems;
+            }
             if (parsed.dates) appState.dates = parsed.dates;
             if (parsed.currentMondayStr) appState.currentMondayStr = parsed.currentMondayStr;
+
+            if (appState.currentMondayStr && appState.allWeeksChecked && appState.allWeeksChecked[appState.currentMondayStr]) {
+                appState.checkedItems = { ...appState.allWeeksChecked[appState.currentMondayStr] };
+            }
         }
     } catch (e) {}
 
@@ -431,15 +450,14 @@ function loadLocalState() {
         .then(res => {
             if (res.success && res.stateData) {
                 const data = res.stateData.mdm || res.stateData;
-                if (data.allWeeksChecked) {
-                    appState.allWeeksChecked = { ...(appState.allWeeksChecked || {}), ...data.allWeeksChecked };
+                if (data.allWeeksChecked && Object.keys(data.allWeeksChecked).length > 0) {
+                    appState.allWeeksChecked = { ...(data.allWeeksChecked || {}), ...(appState.allWeeksChecked || {}) };
                 }
                 if (appState.currentMondayStr && appState.allWeeksChecked && appState.allWeeksChecked[appState.currentMondayStr]) {
                     appState.checkedItems = { ...appState.allWeeksChecked[appState.currentMondayStr] };
-                } else if (data.checkedItems && Object.keys(data.checkedItems).length > 0) {
+                } else if (data.checkedItems && Object.keys(data.checkedItems).length > 0 && Object.keys(appState.checkedItems || {}).length === 0) {
                     appState.checkedItems = data.checkedItems;
                 }
-                if (data.dates) appState.dates = data.dates;
                 renderChecklistTable();
             }
         })

@@ -1,22 +1,8 @@
 {
   "mdm": {
-    "checkedItems": {},
-    "allWeeksChecked": {
-      "2026-09-07": {},
-      "2026-09-28": {},
-      "2026-11-02": {},
-      "2026-08-31": {}
-    },
-    "dates": {
-      "mon": "31/08/2026",
-      "tue": "01/09/2026",
-      "wed": "02/09/2026",
-      "thu": "03/09/2026",
-      "fri": "04/09/2026",
-      "sat": "05/09/2026"
-    },
-    "weekLabel": "Week (07/09 - 12/09/2026)",
-    "currentMondayStr": "2026-09-07"
+    "checkedItems": {
+      "1-mon-0": true
+    }
   },
   "breakfast": {
     "checkedItems": {
